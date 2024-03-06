@@ -26,6 +26,11 @@ oc new-project sydney
 oc new-project atlas
 oc new-project marathan
 
+oc new-project apples
+oc new-app --name oranges --docker-image quay.io/redhattraining/gitlab-ce:8.4.3-ce.0
+oc patch svc oranges -p '{"spec":{"selector":{"deployment":"orange"}}}'
+oc expose svc oranges
+
 oc new-project ronic
 oc create deployment cherry --image quay.io/redhattraining/hello-world-nginx:v1.0
 oc expose svc cherry
